@@ -3,90 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>水的蒸发演示 - 科学实验</title>
+    <title>曹冲称象 - 交互式动画演示</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🌊 水的蒸发演示 💨</h1>
-            <p class="subtitle">观察水是如何变成水蒸气的！</p>
+            <h1>🐘 曹冲称象 ⚖️</h1>
+            <p class="subtitle">一个聪明的称重方法</p>
         </header>
 
-        <div class="animation-container">
-            <!-- Sun/Heat Source -->
-            <div class="sun" id="sun">
-                <div class="sun-ray ray1"></div>
-                <div class="sun-ray ray2"></div>
-                <div class="sun-ray ray3"></div>
-                <div class="sun-ray ray4"></div>
-                <div class="sun-center">☀️</div>
-            </div>
-            <div class="label sun-label">太阳加热</div>
-
-            <!-- Heat waves -->
-            <div class="heat-waves" id="heatWaves">
-                <div class="heat-wave"></div>
-                <div class="heat-wave"></div>
-                <div class="heat-wave"></div>
-            </div>
-
-            <!-- Water vapor area -->
-            <div class="vapor-area">
-                <div class="label vapor-label">水蒸气 ☁️</div>
-                <div id="vaporContainer"></div>
-            </div>
-
-            <!-- Water container (bowl) -->
-            <div class="bowl-container">
-                <div class="bowl">
-                    <div class="water" id="water">
-                        <div class="water-surface"></div>
-                        <div id="moleculeContainer"></div>
-                    </div>
-                </div>
-                <div class="label water-label">液态水 💧</div>
-            </div>
+        <div class="canvas-container">
+            <canvas id="mainCanvas"></canvas>
         </div>
 
-        <!-- Control buttons -->
+        <div class="step-info" id="stepInfo">
+            <h2 id="stepTitle">场景一：大象上船</h2>
+            <p id="stepDescription">大象走上船，船身下沉，在船身上标记水位线。</p>
+        </div>
+
         <div class="controls">
-            <button id="startBtn" class="btn btn-start">▶️ 开始演示</button>
-            <button id="pauseBtn" class="btn btn-pause" disabled>⏸️ 暂停</button>
+            <button id="prevBtn" class="btn btn-prev" disabled>⬅️ 上一步</button>
+            <button id="playBtn" class="btn btn-play">▶️ 自动播放</button>
+            <button id="nextBtn" class="btn btn-next">下一步 ➡️</button>
             <button id="resetBtn" class="btn btn-reset">🔄 重新开始</button>
         </div>
 
-        <!-- Explanation section -->
+        <div class="progress-indicator">
+            <div class="progress-step active" data-step="0">
+                <div class="progress-dot"></div>
+                <span>场景一</span>
+            </div>
+            <div class="progress-step" data-step="1">
+                <div class="progress-dot"></div>
+                <span>场景二</span>
+            </div>
+            <div class="progress-step" data-step="2">
+                <div class="progress-dot"></div>
+                <span>场景三</span>
+            </div>
+            <div class="progress-step" data-step="3">
+                <div class="progress-dot"></div>
+                <span>场景四</span>
+            </div>
+        </div>
+
         <div class="explanation">
-            <h2>💡 什么是蒸发？</h2>
+            <h2>💡 曹冲称象的故事</h2>
             <div class="info-box">
-                <p><strong>🌡️ 蒸发是什么？</strong></p>
-                <p>蒸发是水从液体变成气体的过程。当太阳照射或加热水时，水分子会获得能量，变得活跃，然后飞到空气中变成看不见的水蒸气。</p>
+                <p><strong>📖 历史背景</strong></p>
+                <p>曹冲是三国时期曹操的儿子。有一次，东吴孙权送给曹操一头大象，大家都想知道这头象有多重，但是没有那么大的秤。当时曹冲才六岁，他想出了一个聪明的办法。</p>
             </div>
             
             <div class="info-box">
-                <p><strong>🔍 你能看到什么？</strong></p>
+                <p><strong>🔬 科学原理</strong></p>
                 <ul>
-                    <li>☀️ 太阳加热水面</li>
-                    <li>💧 蓝色小球是水分子</li>
-                    <li>⬆️ 水分子从水里上升到空气中</li>
-                    <li>☁️ 上升的水分子变成了水蒸气</li>
+                    <li><strong>浮力原理：</strong>船在水中受到的浮力等于它排开的水的重量</li>
+                    <li><strong>等量代换：</strong>大象的重量 = 让船下沉到同一水位的石头重量</li>
+                    <li><strong>化整为零：</strong>将难以测量的大象重量转化为容易测量的石头重量</li>
                 </ul>
             </div>
 
             <div class="info-box">
-                <p><strong>🌍 生活中的例子：</strong></p>
-                <ul>
-                    <li>晒衣服时，湿衣服会变干</li>
-                    <li>下雨后地上的水坑会消失</li>
-                    <li>热水会冒出"白气"</li>
-                    <li>夏天洒在地上的水很快就干了</li>
-                </ul>
+                <p><strong>🎯 方法步骤</strong></p>
+                <ol>
+                    <li>让大象站上船，船会下沉，在船舷上画一条水位线</li>
+                    <li>让大象下船，然后往船上装石头</li>
+                    <li>一直装到船下沉到刚才画的那条线为止</li>
+                    <li>称一称船上的石头，就知道大象有多重了</li>
+                </ol>
+            </div>
+
+            <div class="info-box">
+                <p><strong>🌟 智慧启示</strong></p>
+                <p>这个故事告诉我们：遇到困难时，不要被表面问题吓倒。换一个角度思考，运用科学知识和创造性思维，看似不可能完成的任务也能找到解决方法。</p>
             </div>
         </div>
 
         <footer>
-            <p>🎓 适合三年级小学生的科学演示</p>
+            <p>🎓 中国古代智慧 · 科学原理演示</p>
         </footer>
     </div>
 
