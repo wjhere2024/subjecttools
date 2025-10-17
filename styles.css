@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     background: white;
     border-radius: 20px;
@@ -38,327 +38,52 @@ h1 {
     color: #7f8c8d;
 }
 
-/* Animation Container */
-.animation-container {
+.canvas-container {
     position: relative;
     width: 100%;
-    height: 500px;
-    background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%);
+    background: linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 50%, #4682B4 100%);
     border-radius: 15px;
     margin-bottom: 30px;
     overflow: hidden;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Sun */
-.sun {
-    position: absolute;
-    top: 30px;
-    right: 80px;
-    width: 80px;
-    height: 80px;
-    z-index: 10;
-}
-
-.sun-center {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    font-size: 60px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     display: flex;
-    align-items: center;
     justify-content: center;
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+    align-items: center;
 }
 
-.sun.active .sun-center {
-    animation: sunPulse 2s ease-in-out infinite;
+#mainCanvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
-.sun-ray {
-    position: absolute;
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, #FFD700, transparent);
-    top: 50%;
-    left: 50%;
-    transform-origin: 0 50%;
-    opacity: 0;
+.step-info {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 6px solid #667eea;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.sun.active .sun-ray {
-    opacity: 0.6;
+.step-info h2 {
+    color: #2c3e50;
+    font-size: 1.8em;
+    margin-bottom: 12px;
 }
 
-.ray1 {
-    transform: translate(-50%, -50%) rotate(0deg);
+.step-info p {
+    color: #555;
+    font-size: 1.15em;
+    line-height: 1.6;
 }
 
-.ray2 {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.ray3 {
-    transform: translate(-50%, -50%) rotate(90deg);
-}
-
-.ray4 {
-    transform: translate(-50%, -50%) rotate(135deg);
-}
-
-.sun.active .sun-ray {
-    animation: rayRotate 8s linear infinite;
-}
-
-@keyframes sunPulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-}
-
-@keyframes rayRotate {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
-}
-
-/* Heat Waves */
-.heat-waves {
-    position: absolute;
-    top: 120px;
-    right: 100px;
-    width: 60px;
-    height: 150px;
-    z-index: 5;
-}
-
-.heat-wave {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: radial-gradient(circle, rgba(255, 100, 0, 0.3), transparent);
-    border-radius: 50%;
-    opacity: 0;
-}
-
-.heat-wave:nth-child(1) {
-    left: 0;
-}
-
-.heat-wave:nth-child(2) {
-    left: 15px;
-}
-
-.heat-wave:nth-child(3) {
-    left: 30px;
-}
-
-.heat-waves.active .heat-wave {
-    animation: heatWaveMove 2s ease-in-out infinite;
-}
-
-.heat-waves.active .heat-wave:nth-child(2) {
-    animation-delay: 0.3s;
-}
-
-.heat-waves.active .heat-wave:nth-child(3) {
-    animation-delay: 0.6s;
-}
-
-@keyframes heatWaveMove {
-    0% {
-        transform: translateY(0) scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(140px) scale(1.5);
-        opacity: 0;
-    }
-}
-
-/* Labels */
-.label {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 1.1em;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 15;
-}
-
-.sun-label {
-    top: 120px;
-    right: 80px;
-    color: #ff6b00;
-}
-
-.vapor-label {
-    top: 20px;
-    left: 50px;
-    color: #6c757d;
-}
-
-.water-label {
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #0066cc;
-}
-
-/* Vapor Area */
-.vapor-area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    z-index: 8;
-}
-
-#vaporContainer {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Bowl Container */
-.bowl-container {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9;
-}
-
-.bowl {
-    width: 280px;
-    height: 120px;
-    background: linear-gradient(to bottom, #d4a574 0%, #c69463 50%, #b8845a 100%);
-    border-radius: 0 0 140px 140px;
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border: 4px solid #a67c52;
-}
-
-.bowl::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    height: 8px;
-    background: linear-gradient(to bottom, #e0b887 0%, #c69463 100%);
-    border-radius: 50%;
-}
-
-.water {
-    position: absolute;
-    bottom: 0;
-    left: 8px;
-    right: 8px;
-    height: 90px;
-    background: linear-gradient(to bottom, #4da6ff 0%, #0080ff 100%);
-    border-radius: 0 0 130px 130px;
-    overflow: hidden;
-}
-
-.water-surface {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.4);
-    animation: waterShimmer 2s ease-in-out infinite;
-}
-
-@keyframes waterShimmer {
-    0%, 100% {
-        opacity: 0.4;
-    }
-    50% {
-        opacity: 0.8;
-    }
-}
-
-#moleculeContainer {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Water Molecule */
-.molecule {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: radial-gradient(circle, #ffffff 0%, #00bfff 100%);
-    border-radius: 50%;
-    border: 2px solid #0099cc;
-    box-shadow: 0 0 8px rgba(0, 191, 255, 0.6);
-}
-
-.molecule.evaporating {
-    animation: evaporate 3s ease-in-out forwards;
-}
-
-@keyframes evaporate {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: translate(var(--mid-x, 0), var(--mid-y, -150px)) scale(0.8);
-        opacity: 0.7;
-    }
-    100% {
-        transform: translate(var(--end-x, 0), var(--end-y, -300px)) scale(0.3);
-        opacity: 0;
-    }
-}
-
-/* Vapor Molecule */
-.vapor-molecule {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(200, 220, 255, 0.3));
-    border-radius: 50%;
-    animation: vaporFloat 4s ease-in-out infinite;
-}
-
-@keyframes vaporFloat {
-    0%, 100% {
-        transform: translate(0, 0);
-    }
-    25% {
-        transform: translate(10px, -5px);
-    }
-    50% {
-        transform: translate(-5px, -10px);
-    }
-    75% {
-        transform: translate(15px, -5px);
-    }
-}
-
-/* Controls */
 .controls {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -370,6 +95,7 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
 }
 
 .btn:hover:not(:disabled) {
@@ -386,22 +112,98 @@ h1 {
     cursor: not-allowed;
 }
 
-.btn-start {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+.btn-prev {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+}
+
+.btn-play {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
 }
 
 .btn-pause {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    color: white;
+}
+
+.btn-next {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .btn-reset {
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: white;
 }
 
-/* Explanation Section */
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    flex: 1;
+    max-width: 150px;
+}
+
+.progress-step::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    width: 100%;
+    height: 3px;
+    background: #dee2e6;
+    z-index: -1;
+}
+
+.progress-step:last-child::after {
+    display: none;
+}
+
+.progress-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dee2e6;
+    border: 3px solid #adb5bd;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active .progress-dot {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+    transform: scale(1.2);
+}
+
+.progress-step.completed .progress-dot {
+    background: #28a745;
+    border-color: #28a745;
+}
+
+.progress-step span {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #6c757d;
+    text-align: center;
+}
+
+.progress-step.active span {
+    color: #667eea;
+}
+
+.progress-step.completed span {
+    color: #28a745;
+}
+
 .explanation {
     background: #f8f9fa;
     border-radius: 15px;
@@ -435,7 +237,7 @@ h1 {
     font-size: 1.1em;
 }
 
-.info-box ul {
+.info-box ul, .info-box ol {
     margin-left: 25px;
     line-height: 1.8;
 }
@@ -445,7 +247,6 @@ h1 {
     font-size: 1.05em;
 }
 
-/* Footer */
 footer {
     text-align: center;
     padding: 20px;
@@ -453,7 +254,6 @@ footer {
     font-size: 1.1em;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         padding: 20px;
@@ -463,42 +263,74 @@ footer {
         font-size: 1.8em;
     }
 
-    .animation-container {
-        height: 400px;
+    .subtitle {
+        font-size: 1em;
     }
 
-    .sun {
-        width: 60px;
-        height: 60px;
-        top: 20px;
-        right: 40px;
+    .step-info h2 {
+        font-size: 1.4em;
     }
 
-    .sun-center {
-        width: 60px;
-        height: 60px;
-        font-size: 45px;
-    }
-
-    .bowl {
-        width: 220px;
-        height: 100px;
-    }
-
-    .water {
-        height: 75px;
+    .step-info p {
+        font-size: 1em;
     }
 
     .controls {
         flex-direction: column;
+        gap: 10px;
     }
 
     .btn {
         width: 100%;
+        padding: 12px 20px;
+        font-size: 1em;
     }
 
-    .label {
-        font-size: 0.9em;
-        padding: 6px 12px;
+    .progress-indicator {
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .progress-step {
+        max-width: 70px;
+    }
+
+    .progress-step span {
+        font-size: 0.7em;
+    }
+
+    .progress-dot {
+        width: 20px;
+        height: 20px;
+    }
+
+    .progress-step::after {
+        top: 10px;
+    }
+
+    .explanation h2 {
+        font-size: 1.4em;
+    }
+
+    .info-box p, .info-box li {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .progress-indicator {
+        gap: 5px;
+    }
+
+    .progress-step {
+        max-width: 60px;
+    }
+
+    .progress-step span {
+        font-size: 0.65em;
     }
 }
