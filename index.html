@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水的蒸发演示 - 科学实验</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 水的蒸发演示 💨</h1>
+            <p class="subtitle">观察水是如何变成水蒸气的！</p>
+        </header>
+
+        <div class="animation-container">
+            <!-- Sun/Heat Source -->
+            <div class="sun" id="sun">
+                <div class="sun-ray ray1"></div>
+                <div class="sun-ray ray2"></div>
+                <div class="sun-ray ray3"></div>
+                <div class="sun-ray ray4"></div>
+                <div class="sun-center">☀️</div>
+            </div>
+            <div class="label sun-label">太阳加热</div>
+
+            <!-- Heat waves -->
+            <div class="heat-waves" id="heatWaves">
+                <div class="heat-wave"></div>
+                <div class="heat-wave"></div>
+                <div class="heat-wave"></div>
+            </div>
+
+            <!-- Water vapor area -->
+            <div class="vapor-area">
+                <div class="label vapor-label">水蒸气 ☁️</div>
+                <div id="vaporContainer"></div>
+            </div>
+
+            <!-- Water container (bowl) -->
+            <div class="bowl-container">
+                <div class="bowl">
+                    <div class="water" id="water">
+                        <div class="water-surface"></div>
+                        <div id="moleculeContainer"></div>
+                    </div>
+                </div>
+                <div class="label water-label">液态水 💧</div>
+            </div>
+        </div>
+
+        <!-- Control buttons -->
+        <div class="controls">
+            <button id="startBtn" class="btn btn-start">▶️ 开始演示</button>
+            <button id="pauseBtn" class="btn btn-pause" disabled>⏸️ 暂停</button>
+            <button id="resetBtn" class="btn btn-reset">🔄 重新开始</button>
+        </div>
+
+        <!-- Explanation section -->
+        <div class="explanation">
+            <h2>💡 什么是蒸发？</h2>
+            <div class="info-box">
+                <p><strong>🌡️ 蒸发是什么？</strong></p>
+                <p>蒸发是水从液体变成气体的过程。当太阳照射或加热水时，水分子会获得能量，变得活跃，然后飞到空气中变成看不见的水蒸气。</p>
+            </div>
+            
+            <div class="info-box">
+                <p><strong>🔍 你能看到什么？</strong></p>
+                <ul>
+                    <li>☀️ 太阳加热水面</li>
+                    <li>💧 蓝色小球是水分子</li>
+                    <li>⬆️ 水分子从水里上升到空气中</li>
+                    <li>☁️ 上升的水分子变成了水蒸气</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <p><strong>🌍 生活中的例子：</strong></p>
+                <ul>
+                    <li>晒衣服时，湿衣服会变干</li>
+                    <li>下雨后地上的水坑会消失</li>
+                    <li>热水会冒出"白气"</li>
+                    <li>夏天洒在地上的水很快就干了</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>🎓 适合三年级小学生的科学演示</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
